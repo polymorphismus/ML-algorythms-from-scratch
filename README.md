@@ -6,87 +6,7 @@ This portfolio showcases **machine learning algorithms implemented from scratch*
 
 ## Projects
 
-### 1. K-Nearest Neighbors (KNN)
-
-**Description:** 
-
-**From-scratch implementation** of the K-Nearest Neighbors algorithm for classification. Complete `KNNClassifier` class built from first principles using NumPy, implementing Euclidean distance computation, neighbor search, and majority voting without relying on ML libraries.
-
-**Key Features:**
-- **Custom `KNNClassifier` Class**: Complete implementation from scratch with `fit()`, `predict()`, and `score()` methods
-- **Distance Computation**: Euclidean distance calculation using NumPy broadcasting: $d(x, y) = \sqrt{\sum_{i=1}^{n}(x_i - y_i)^2}$
-- **Neighbor Search**: Efficient k-nearest neighbor finding using `argpartition` for partial sorting
-- **Input Validation**: Parameter validation ensuring k is positive and less than training set size
-- **Decision Boundary Visualization**: Analysis of how k values affect model complexity and decision boundaries
-- **Bias-Variance Tradeoff**: Comprehensive analysis demonstrating overfitting (small k) and underfitting (large k)
-
-**Technical Highlights:**
-- Lazy learning: stores entire training set, computes distances during prediction
-- Efficient distance matrix computation using NumPy vectorization
-- Majority voting with tie-breaking for classification
-- Compatible with scikit-learn's `GridSearchCV` through proper estimator interface
-
-**Dataset:** Synthetic voter party registration dataset with wealth and religiousness features
-
-**Solution Notebook:** [KNN_Project.ipynb](./KNN_Project.ipynb)
-
----
-
-### 2. Linear and Logistic Regression
-
-**Description:**
-
-**From-scratch implementation** of linear regression covering both analytical (closed-form) and iterative gradient descent solutions. Complete `OrdinaryLinearRegression` and `OrdinaryLinearRegressionGradientDescent` classes built from first principles, including custom `StandardScaler` and Ridge regression implementations.
-
-**Key Features:**
-- **Ordinary Least Squares (OLS)**: Analytical solution using matrix pseudo-inverse: $w = (X^T X)^{-1} X^T y$ with numerical stability considerations
-- **Gradient Descent**: Custom iterative optimization with learning rate tuning and convergence monitoring
-- **Ridge Regression**: L2 regularization implementation with analytical solution: $w_{Ridge} = (X^T X + \lambda I)^{-1} X^T y$
-- **Custom StandardScaler**: Feature normalization implementation from scratch for gradient descent stability
-- **Convergence Detection**: Automatic stopping based on weight change tolerance and divergence detection
-- **Regularization Comparison**: Analysis of Ridge (L2) vs Lasso (L1) regularization effects on coefficients
-
-**Technical Highlights:**
-- Matrix operations using `np.linalg.pinv()` for numerical stability with rank-deficient matrices
-- Gradient computation: $\nabla_w L = \frac{2}{N}X^T(Xw - y)$ for squared loss
-- Convergence check: stops when $||w_{t+1} - w_t|| < \text{tol}$
-- Divergence detection: warns when loss increases significantly (10x)
-- Proper train/test split handling to prevent data leakage in normalization
-
-**Dataset:** Diabetes regression dataset from scikit-learn, predicting disease progression based on physiological measurements
-
-**Solution Notebook:** [Regression_Project.ipynb](./Regression_Project.ipynb)
-
----
-
-### 3. Clustering
-
-**Description:**
-
-**From-scratch implementations** of three fundamental unsupervised learning algorithms: **K-Means** (partitional clustering), **Gaussian Mixture Models** (probabilistic clustering), and **DBSCAN** (density-based clustering). Custom `LloydsKMeans` class built from first principles, with comprehensive analysis of different clustering approaches.
-
-**Key Features:**
-- **K-Means (`LloydsKMeans`)**: Custom implementation of Lloyd's algorithm from scratch
-- **Objective Function**: Minimizes $\sum_{i=1}^{k} \sum_{x \in C_i} ||x - \mu_i||^2$ where $\mu_i$ is the centroid of cluster $C_i$
-- **Centroid Update**: $\mu_i = \frac{1}{|C_i|}\sum_{x \in C_i} x$ after each assignment step
-- **Gaussian Mixture Models**: Probabilistic clustering using Expectation-Maximization (EM) algorithm
-- **DBSCAN**: Density-based clustering identifying core points, border points, and noise
-- **Kernel Methods**: Polynomial kernel transformation for non-linearly separable data (XOR pattern)
-
-**Technical Highlights:**
-- Lloyd's algorithm: iterative assignment and centroid update until convergence
-- EM algorithm: E-step computes responsibilities, M-step updates parameters
-- DBSCAN: density reachability and core point identification
-- Kernel transformation: $K(x, y) = (x^T y + c)^d$ for polynomial features
-- Cluster evaluation using elbow method and silhouette analysis
-
-**Dataset:** Electronic Medical Records (EMR) containing blood test results (Na, K, ALT, AST, WBC, RBC, Hgb, Hct) from patients, plus synthetic datasets for algorithm comparison
-
-**Solution Notebook:** [Clustering_Project.ipynb](./Clustering_Project.ipynb)
-
----
-
-### 4. Support Vector Machines (SVM)
+### 1. Support Vector Machines (SVM)
 
 **Description:**
 
@@ -111,33 +31,7 @@ This portfolio showcases **machine learning algorithms implemented from scratch*
 
 ---
 
-### 5. Naive Bayes
-
-**Description:**
-
-**From-scratch implementation** of Multinomial Naive Bayes classifier for text classification. Complete `NaiveBayes` class built from first principles using Bayes' theorem, implementing log-probability calculations, Laplace smoothing, and sparse matrix handling.
-
-**Key Features:**
-- **Custom `NaiveBayes` Class**: Complete implementation from scratch with `fit()`, `predict()`, and `predict_log_proba()` methods
-- **Bayes' Theorem**: Posterior probability calculation: $P(c|d) = \frac{P(c) \cdot P(d|c)}{P(d)}$ with naive independence assumption
-- **Laplace Smoothing**: Zero probability handling: $P(w_i|c) = \frac{\text{count}(w_i, c) + \alpha}{\sum_{j} \text{count}(w_j, c) + \alpha \cdot |V|}$
-- **Log-Space Computation**: Prevents numerical underflow: $\log P(c|d) = \log P(c) + \sum_{i=1}^{n} \log P(w_i|c)$
-- **Sparse Matrix Support**: Handles both dense and sparse matrices using `scipy.sparse.issparse`
-- **Custom Preprocessor**: Text preprocessing with lemmatization and vectorization integration
-
-**Technical Highlights:**
-- Prior probability: $P(c) = \frac{N_c}{N}$ where $N_c$ is number of documents in class $c$
-- Likelihood computation with sparse matrix operations for memory efficiency
-- Prediction: $\hat{c} = \arg\max_{c} \log P(c|d)$ using log-probabilities
-- Feature count computation: $\text{count}(w_i, c) = \sum_{d \in c} \text{count}(w_i, d)$
-
-**Dataset:** 20 newsgroups dataset containing approximately 18,000 newsgroup posts covering 20 topics with realistic temporal train/test split
-
-**Solution Notebook:** [NaiveBayes_Project.ipynb](./NaiveBayes_Project.ipynb)
-
----
-
-### 6. Decision Trees
+### 2. Decision Trees
 
 **Description:**
 
@@ -164,32 +58,7 @@ This portfolio showcases **machine learning algorithms implemented from scratch*
 
 ---
 
-### 7. Reinforcement Learning
-
-**Description:**
-
-**From-scratch implementation** of reinforcement learning algorithms focusing on Multi-Armed Bandits (MABs). The project implements exploration-exploitation strategies, demonstrating the fundamental tradeoff between trying new actions and exploiting known good actions.
-
-**Key Features:**
-- **Multi-Armed Bandits**: Implementation of the classic exploration-exploitation problem
-- **Epsilon-Greedy Algorithm**: Simple strategy balancing exploration and exploitation
-- **Upper Confidence Bound (UCB)**: More sophisticated strategy using confidence intervals
-- **Regret Analysis**: Measuring performance through cumulative regret over time
-- **Strategy Comparison**: Comparing different exploration-exploitation approaches
-- **Visualization**: Plotting reward accumulation and regret over time
-
-**Technical Highlights:**
-- Exploration vs exploitation tradeoff analysis
-- Confidence interval calculations for UCB algorithm
-- Regret minimization as performance metric
-- Stochastic and adversarial bandit scenarios
-- Real-world applications in recommendation systems and A/B testing
-
-**Solution Notebook:** [ReinforcementLearning_Project.ipynb](./ReinforcementLearning_Project.ipynb)
-
----
-
-### 8. Ensemble Learning
+### 3. Ensemble Learning
 
 **Description:**
 
@@ -218,7 +87,7 @@ This portfolio showcases **machine learning algorithms implemented from scratch*
 
 ---
 
-### 9. Gradient Boosting
+### 4. Gradient Boosting
 
 **Description:**
 
@@ -251,6 +120,137 @@ This portfolio showcases **machine learning algorithms implemented from scratch*
 
 ---
 
+### 5. K-Nearest Neighbors (KNN)
+
+**Description:** 
+
+**From-scratch implementation** of the K-Nearest Neighbors algorithm for classification. Complete `KNNClassifier` class built from first principles using NumPy, implementing Euclidean distance computation, neighbor search, and majority voting without relying on ML libraries.
+
+**Key Features:**
+- **Custom `KNNClassifier` Class**: Complete implementation from scratch with `fit()`, `predict()`, and `score()` methods
+- **Distance Computation**: Euclidean distance calculation using NumPy broadcasting: $d(x, y) = \sqrt{\sum_{i=1}^{n}(x_i - y_i)^2}$
+- **Neighbor Search**: Efficient k-nearest neighbor finding using `argpartition` for partial sorting
+- **Input Validation**: Parameter validation ensuring k is positive and less than training set size
+- **Decision Boundary Visualization**: Analysis of how k values affect model complexity and decision boundaries
+- **Bias-Variance Tradeoff**: Comprehensive analysis demonstrating overfitting (small k) and underfitting (large k)
+
+**Technical Highlights:**
+- Lazy learning: stores entire training set, computes distances during prediction
+- Efficient distance matrix computation using NumPy vectorization
+- Majority voting with tie-breaking for classification
+- Compatible with scikit-learn's `GridSearchCV` through proper estimator interface
+
+**Dataset:** Synthetic voter party registration dataset with wealth and religiousness features
+
+**Solution Notebook:** [KNN_Project.ipynb](./KNN_Project.ipynb)
+
+---
+
+### 6. Linear and Logistic Regression
+
+**Description:**
+
+**From-scratch implementation** of linear regression covering both analytical (closed-form) and iterative gradient descent solutions. Complete `OrdinaryLinearRegression` and `OrdinaryLinearRegressionGradientDescent` classes built from first principles, including custom `StandardScaler` and Ridge regression implementations.
+
+**Key Features:**
+- **Ordinary Least Squares (OLS)**: Analytical solution using matrix pseudo-inverse: $w = (X^T X)^{-1} X^T y$ with numerical stability considerations
+- **Gradient Descent**: Custom iterative optimization with learning rate tuning and convergence monitoring
+- **Ridge Regression**: L2 regularization implementation with analytical solution: $w_{Ridge} = (X^T X + \lambda I)^{-1} X^T y$
+- **Custom StandardScaler**: Feature normalization implementation from scratch for gradient descent stability
+- **Convergence Detection**: Automatic stopping based on weight change tolerance and divergence detection
+- **Regularization Comparison**: Analysis of Ridge (L2) vs Lasso (L1) regularization effects on coefficients
+
+**Technical Highlights:**
+- Matrix operations using `np.linalg.pinv()` for numerical stability with rank-deficient matrices
+- Gradient computation: $\nabla_w L = \frac{2}{N}X^T(Xw - y)$ for squared loss
+- Convergence check: stops when $||w_{t+1} - w_t|| < \text{tol}$
+- Divergence detection: warns when loss increases significantly (10x)
+- Proper train/test split handling to prevent data leakage in normalization
+
+**Dataset:** Diabetes regression dataset from scikit-learn, predicting disease progression based on physiological measurements
+
+**Solution Notebook:** [Regression_Project.ipynb](./Regression_Project.ipynb)
+
+---
+
+### 7. Clustering
+
+**Description:**
+
+**From-scratch implementations** of three fundamental unsupervised learning algorithms: **K-Means** (partitional clustering), **Gaussian Mixture Models** (probabilistic clustering), and **DBSCAN** (density-based clustering). Custom `LloydsKMeans` class built from first principles, with comprehensive analysis of different clustering approaches.
+
+**Key Features:**
+- **K-Means (`LloydsKMeans`)**: Custom implementation of Lloyd's algorithm from scratch
+- **Objective Function**: Minimizes $\sum_{i=1}^{k} \sum_{x \in C_i} ||x - \mu_i||^2$ where $\mu_i$ is the centroid of cluster $C_i$
+- **Centroid Update**: $\mu_i = \frac{1}{|C_i|}\sum_{x \in C_i} x$ after each assignment step
+- **Gaussian Mixture Models**: Probabilistic clustering using Expectation-Maximization (EM) algorithm
+- **DBSCAN**: Density-based clustering identifying core points, border points, and noise
+- **Kernel Methods**: Polynomial kernel transformation for non-linearly separable data (XOR pattern)
+
+**Technical Highlights:**
+- Lloyd's algorithm: iterative assignment and centroid update until convergence
+- EM algorithm: E-step computes responsibilities, M-step updates parameters
+- DBSCAN: density reachability and core point identification
+- Kernel transformation: $K(x, y) = (x^T y + c)^d$ for polynomial features
+- Cluster evaluation using elbow method and silhouette analysis
+
+**Dataset:** Electronic Medical Records (EMR) containing blood test results (Na, K, ALT, AST, WBC, RBC, Hgb, Hct) from patients, plus synthetic datasets for algorithm comparison
+
+**Solution Notebook:** [Clustering_Project.ipynb](./Clustering_Project.ipynb)
+
+---
+
+### 8. Naive Bayes
+
+**Description:**
+
+**From-scratch implementation** of Multinomial Naive Bayes classifier for text classification. Complete `NaiveBayes` class built from first principles using Bayes' theorem, implementing log-probability calculations, Laplace smoothing, and sparse matrix handling.
+
+**Key Features:**
+- **Custom `NaiveBayes` Class**: Complete implementation from scratch with `fit()`, `predict()`, and `predict_log_proba()` methods
+- **Bayes' Theorem**: Posterior probability calculation: $P(c|d) = \frac{P(c) \cdot P(d|c)}{P(d)}$ with naive independence assumption
+- **Laplace Smoothing**: Zero probability handling: $P(w_i|c) = \frac{\text{count}(w_i, c) + \alpha}{\sum_{j} \text{count}(w_j, c) + \alpha \cdot |V|}$
+- **Log-Space Computation**: Prevents numerical underflow: $\log P(c|d) = \log P(c) + \sum_{i=1}^{n} \log P(w_i|c)$
+- **Sparse Matrix Support**: Handles both dense and sparse matrices using `scipy.sparse.issparse`
+- **Custom Preprocessor**: Text preprocessing with lemmatization and vectorization integration
+
+**Technical Highlights:**
+- Prior probability: $P(c) = \frac{N_c}{N}$ where $N_c$ is number of documents in class $c$
+- Likelihood computation with sparse matrix operations for memory efficiency
+- Prediction: $\hat{c} = \arg\max_{c} \log P(c|d)$ using log-probabilities
+- Feature count computation: $\text{count}(w_i, c) = \sum_{d \in c} \text{count}(w_i, d)$
+
+**Dataset:** 20 newsgroups dataset containing approximately 18,000 newsgroup posts covering 20 topics with realistic temporal train/test split
+
+**Solution Notebook:** [NaiveBayes_Project.ipynb](./NaiveBayes_Project.ipynb)
+
+---
+
+### 9. Reinforcement Learning
+
+**Description:**
+
+**From-scratch implementation** of reinforcement learning algorithms focusing on Multi-Armed Bandits (MABs). The project implements exploration-exploitation strategies, demonstrating the fundamental tradeoff between trying new actions and exploiting known good actions.
+
+**Key Features:**
+- **Multi-Armed Bandits**: Implementation of the classic exploration-exploitation problem
+- **Epsilon-Greedy Algorithm**: Simple strategy balancing exploration and exploitation
+- **Upper Confidence Bound (UCB)**: More sophisticated strategy using confidence intervals
+- **Regret Analysis**: Measuring performance through cumulative regret over time
+- **Strategy Comparison**: Comparing different exploration-exploitation approaches
+- **Visualization**: Plotting reward accumulation and regret over time
+
+**Technical Highlights:**
+- Exploration vs exploitation tradeoff analysis
+- Confidence interval calculations for UCB algorithm
+- Regret minimization as performance metric
+- Stochastic and adversarial bandit scenarios
+- Real-world applications in recommendation systems and A/B testing
+
+**Solution Notebook:** [ReinforcementLearning_Project.ipynb](./ReinforcementLearning_Project.ipynb)
+
+---
+
 ## Technical Standards
 
 - **All core algorithms are implemented from scratch** using NumPy and core Python libraries
@@ -261,5 +261,3 @@ This portfolio showcases **machine learning algorithms implemented from scratch*
 - Clear separation of concerns: data loading, preprocessing, model definition, training, evaluation
 - All projects are ready for portfolio presentation
 - Implementations demonstrate deep understanding of algorithm mechanics and mathematical foundations
-
-
